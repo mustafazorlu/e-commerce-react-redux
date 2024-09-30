@@ -1,16 +1,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "https://fakestoreapi.com/products";
-
 export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
-    const response = await fetch(API_URL);
+    const response = await fetch("https://fakestoreapi.com/products");
     const data = await response.json();
     console.log(data);
     return data;
 });
+export const fetchSingleProduct = createAsyncThunk(
+    "fetchSingleProduct",
+    async (id) => {
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+        const data = await response.json();
+        console.log(data);
+        return data;
+    }
+);
 
 const initialState = {
-    products: null,
+    products: [],
+    singleProduct: {},
     status: "null",
     error: null,
 };
@@ -30,6 +38,20 @@ export const productsSlice = createSlice({
                 console.log(state.products);
             })
             .addCase(fetchProducts.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message;
+            });
+
+        builder
+            .addCase(fetchSingleProduct.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(fetchSingleProduct.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.singleProduct = action.payload;
+                console.log(state.singleProduct);
+            })
+            .addCase(fetchSingleProduct.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
             });

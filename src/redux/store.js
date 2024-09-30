@@ -6,6 +6,7 @@ const store = configureStore({
     reducer: {
         drawer: drawerSlice,
         products: productsSlice,
+        singleProduct: productsSlice,
     },
 });
 
