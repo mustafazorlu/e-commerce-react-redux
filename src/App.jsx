@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageContainer from "./containers/PageContainer";
 import { useSelector } from "react-redux";
-import Card from "./components/Card";
+import Cart from "./components/Cart";
 
 function App() {
     const { drawer } = useSelector((state) => state.drawer);
@@ -24,7 +24,7 @@ function App() {
                         <Route />
                         <Route path="/detail/:id" element={<Details />} />
                     </Routes>
-                    {drawer.payload && <Card />}
+                    {drawer.payload && <Cart />}
                     <Footer />
                 </BrowserRouter>
             </PageContainer>
