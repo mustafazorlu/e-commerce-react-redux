@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=REM:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    font-family: "Syne", sans-serif;
+    font-family: "Reddit Sans", sans-serif;
 }
 
-#root{
+#root {
     background-color: #111;
     min-height: 100vh;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -13,12 +13,12 @@ import Card from "./components/Card";
 function App() {
     const { drawer } = useSelector((state) => state.drawer);
 
-    console.log(drawer);
     return (
         <div className="app">
             <PageContainer>
                 <BrowserRouter>
                     <Navbar />
+
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route />
